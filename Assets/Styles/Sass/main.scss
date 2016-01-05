@@ -1,0 +1,10 @@
+html,body {
+  margin: 0;
+  padding: 0;
+}
+
+//tools import
+@import "1-tools/variables.scss";
+//section import
+@import "2-sections/header.scss";
+//module import
