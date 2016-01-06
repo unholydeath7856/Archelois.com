@@ -9,7 +9,7 @@ var archeloisApp = (function ($) {
 
   }
 
-  
+
 
   //Methods
   return {

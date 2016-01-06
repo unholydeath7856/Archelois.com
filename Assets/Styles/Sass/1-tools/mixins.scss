@@ -1,0 +1,97 @@
+//-=+=- Mixins -=+=-
+//Size: Allows You to set width, height
+//Position: pass the mixin the style of position accept for flex
+//and then pass your size args
+//Prefix: set prefixs for all internet browsers
+//pass in the css then the browsers you need
+//Breakpoint Handler: sets quick media queries thorugh mixin string pass
+//Triangle: creates a triangle through css
+
+@import "functions.scss";
+
+@mixin size($width,$height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin position($position, $args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+    @if $i
+    and $i + 1 <= length($args)
+    and type-of( nth($args, $i + 1) ) == number {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+  position: $position;
+}
+
+@mixin absolute($args) {
+  @include position(absolute,$args);
+}
+
+@mixin fixed($args) {
+  @include position(fixed,$args);
+}
+
+@mixin relative($args) {
+  @include position(relative,$args);
+}
+
+@mixin prefix($map, $vendors: webkit moz ms o) {
+  @each $prop, $value in $map {
+    @if $vendors {
+      @each $vendor in $vendors {
+        #{"-" + $vendor + "-" + $prop}: #{$value};
+      }
+    }
+    #{$prop}: #{$value};
+  }
+}
+
+$breakpoints: (
+  'tiny': (max-width:767px),
+  'small': (min-width:768px),
+  'medium': (min-width:992px),
+  'large': (min-width:1200px),
+  'custom': (minx-width:480px)
+);
+
+@mixin breakpoint($name) {
+  @if map-has-key($breakpoints) {
+    @media #{inspect(map-get($breakpoints,$name))} {
+      @content;
+    }
+  } @else {
+    @warn "Couldn't find a breakpoint name `#{$name}`.";
+  }
+}
+
+@mixin triangle($direction, $position, $color: currentColor, $size: 12px) {
+  // Make sure the direction is valid
+  @if not index(top right bottom left, $direction) {
+    @warn "Direction must be one of top, right, bottom or left.";
+  }
+
+  @else {
+    @include absolute($position); // Position
+    @include size(0); // Size
+    content: '';
+    z-index: 2;
+    display: inline-block;
+    vertical-align: middle;
+
+    border-#{$direction}: $size * 1.5 solid $color;
+    $perpendicular-borders: $size solid transparent;
+
+    @if $direction == top or $direction == bottom {
+      border-left:   $perpendicular-borders;
+      border-right:  $perpendicular-borders;
+    }
+
+    @else if $direction == right or $direction == left {
+      border-bottom: $perpendicular-borders;
+      border-top:    $perpendicular-borders;
+    }
+  }
+}

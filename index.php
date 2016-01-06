@@ -17,7 +17,6 @@
   </head>
   <body>
     <!-- Header !-->
-
     <header id="top" class="header">
 
       <!-- Nav !-->
@@ -40,7 +39,6 @@
     </header>
 
     <!-- About !-->
-
     <section class="about">
 
       <!-- What Is This !-->
@@ -86,6 +84,7 @@
 
     <!-- Scripts !-->
     <script src="Assets/Scripts/JS/jquery.js" charset="utf-8"></script>
+    <script src="Assets/Scripts/JS/events.js" charset="utf-8"></script>
     <script src="Assets/Scripts/JS/app.js" charset="utf-8"></script>
   </body>
 </html>

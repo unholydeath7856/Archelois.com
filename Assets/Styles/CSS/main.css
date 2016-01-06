@@ -8,8 +8,8 @@ html, body {
   .header .navbar-fluid {
     opacity: 0.9;
     display: flex;
-    height: 75px;
     width: 100%;
+    height: 75px;
     background-color: #0A308A; }
     .header .navbar-fluid .brand-container {
       margin-left: 25px;
@@ -24,8 +24,8 @@ html, body {
       display: flex;
       border-left: 1px solid #000026;
       display: inline-flex;
-      height: 100%;
       width: 60%;
+      height: 100%;
       vertical-align: middle; }
       .header .navbar-fluid .nav-link-container .nav-link {
         display: flex;
@@ -34,13 +34,47 @@ html, body {
         height: 80%;
         padding: 10px 25px;
         padding-bottom: 3px;
-        border: 1px solid #000026;
+        border: 1px solid #000058;
         border-left: none;
         text-decoration: none;
         color: #989597; }
+        .header .navbar-fluid .nav-link-container .nav-link:hover {
+          border: 1px solid #00003f;
+          border-left: none;
+          background-color: #001771; }
       .header .navbar-fluid .nav-link-container #active {
-        background-color: #000026;
-        border: 1px solid #000012;
+        background-color: #000058;
+        border: 1px solid #000026;
         border-left: none; }
+        .header .navbar-fluid .nav-link-container #active:before {
+          top: 3.55em;
+          position: absolute;
+          width: 0;
+          height: 0;
+          content: '';
+          z-index: 2;
+          display: inline-block;
+          vertical-align: middle;
+          border-bottom: 18px solid #08E073;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent; }
+    .header .navbar-fluid .btn-login {
+      cursor: pointer;
+      font-family: "Open Sans";
+      font-size: 16px;
+      width: 150px;
+      height: 40px;
+      top: 20px;
+      right: 75px;
+      position: absolute;
+      outline: none;
+      border: none;
+      border-radius: 10px;
+      background-color: #22ff34; }
+      .header .navbar-fluid .btn-login:active {
+        -webkit-box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.75);
+        box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.75);
+        background-color: #d1ffe3; }
 
 /*# sourceMappingURL=main.css.map */
